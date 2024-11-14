@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch</title>
+</head>
+
+<style>
+
+h1{
+    color: rgb(243, 10, 10);
+    font-style: italic;
+    margin-left: 50px;
+}
+q{
+    color: aqua;
+}
+
+</style>
+<body>
+
+  <h1>Stopwatch</h1>
+  <p>Time: <span id="time">0</span> seconds</p>
+  <button id="startBtn">Start</button>
+  <button id="stopBtn">Stop</button>
+     
+<br>
+<br>
+
+  <q>1.task is to create an remainder of water for every hour by using set 
+    timeout <br>
+    
+    2.create a stopwatch based on set interval
+    </q>
+
+  <script>
+    // ***********************************************(Q1)*******************************************************//
+    // Function to remind to drink water
+function remindToDrinkWater() {
+    console.log("Reminder: Drink some water!");
+
+    // Set timeout to call this function again in 1 hour (60 minutes * 60 seconds * 1000 milliseconds)
+    setTimeout(remindToDrinkWater,60 * 60 * 10000);
+}
+
+// Initial reminder when the script starts
+remindToDrinkWater();
+
+    // **********************************************(Q2)********************************************************//
+    let timer;
+    let time = 0;
+    let running = false;
+
+    const timeDisplay = document.getElementById('time');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    // const resetbnt = document.getElementById('resetbtn')
+
+    // Function to start the stopwatch
+    // debugger
+    function startStopwatch() {
+      if (!running) {
+        running = true;
+        timer = setInterval(() => {
+          time++;
+          timeDisplay.textContent = time;
+        }, 1000);  // Update every 1 second (1000 milliseconds)
+      }
+    }
+
+    // Function to stop the stopwatch
+    function stopStopwatch() {
+      if (running) {
+        clearInterval(timer);  // Stop the interval timer
+        running = false;
+      }
+    }
+    
+    // function reset(){
+    //   count = 0
+    // }
+    
+    // Attach event listeners to buttons
+    startBtn.addEventListener('click', startStopwatch);
+    stopBtn.addEventListener('click', stopStopwatch);
+
+  </script>
+
+</body>
+</html>
